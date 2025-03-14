@@ -7,6 +7,11 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState({ sent: false, error: false });
 
+const FaEnvelopeIcon: React.FC = () => <FaEnvelope />;
+const FaPhoneIcon: React.FC = () => <FaPhone />;
+const FaMapMarkerAltIcon: React.FC = () => <FaMapMarkerAlt />;
+
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
