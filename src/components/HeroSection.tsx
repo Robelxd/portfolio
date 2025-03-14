@@ -1,18 +1,18 @@
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
-import { FaLinkedin, FaGithub, FaTwitter, FaYoutube, FaBlogger } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 
 const HeroSection = () => {
   return (
     <section className="w-full h-screen flex items-center justify-center bg-[#1E1E1E] text-white">
       <div className="w-[80%] max-w-6xl flex flex-col md:flex-row items-center gap-8">
         {/* Left Side */}
-        <div className="relative w-full md:w-1/2 flex flex-col items-center">
+        <div className="relative flex flex-col items-center w-full md:w-1/2">
           <div className="relative w-72 h-72 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-[#4E9F3D]">
             <img
               src="src/assets/profile.jpg" // Change this to your image
               alt="Profile"
-              className="w-full h-full object-cover"
+              className="object-cover w-full h-full"
             />
           </div>
           {/* Social Icons */}
@@ -48,7 +48,7 @@ const HeroSection = () => {
         </div>
 
         {/* Right Side */}
-        <div className="w-full md:w-1/2 text-center md:text-left">
+        <div className="w-full text-center md:w-1/2 md:text-left">
         <h1 className="text-4xl font-bold">Hi, I'm Robel Doba</h1>
 
 <TypeAnimation
@@ -64,12 +64,12 @@ const HeroSection = () => {
   repeat={Infinity}
   className="mt-2 text-lg font-semibold text-green-600"
 />
-          <p className="text-gray-300 mt-4 leading-relaxed">
+          <p className="mt-4 leading-relaxed text-gray-300">
             Passionate web developer crafting seamless digital experiences. 
             Skilled in frontend and backend technologies, I build user-friendly and scalable applications.
           </p>
           {/* Buttons */}
-          <div className="flex gap-4 mt-6 justify-center md:justify-start">
+          <div className="flex justify-center gap-4 mt-6 md:justify-start">
             <button className="px-6 py-2 bg-transparent border-2 border-[#4E9F3D] text-[#4E9F3D] rounded-full hover:bg-[#4E9F3D] hover:text-white transition duration-300">
             <a href="src/assets/robeldoba_cv.pdf" download="robeldoba_cv.pdf">
             My Resume </a>

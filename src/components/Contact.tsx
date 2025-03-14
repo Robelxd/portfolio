@@ -23,10 +23,10 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-16 px-32 bg-gray-900 text-white">
+    <section id="contact" className="px-32 py-16 text-white bg-gray-900">
       <div className="container mx-auto text-center">
         <motion.h2 
-          className="text-4xl text-green-500 font-bold mb-8"
+          className="mb-8 text-4xl font-bold text-green-500"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -34,22 +34,22 @@ export default function Contact() {
           Get in Touch
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-10">
+        <div className="grid gap-10 md:grid-cols-2">
           {/* Contact Info */}
           <motion.div 
-            className="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700"
+            className="p-6 bg-gray-800 border border-gray-700 shadow-lg rounded-xl"
             whileHover={{ scale: 1.05 }}
           >
             <div className="flex items-center mb-4">
-              <FaEnvelope className="text-blue-400 text-3xl mr-4" />
+              <FaEnvelope className="mr-4 text-3xl text-blue-400" />
               <p className="text-gray-400">robeldoba8@gmail.com</p>
             </div>
             <div className="flex items-center mb-4">
-              <FaPhone className="text-green-400 text-3xl mr-4" />
+              <FaPhone className="mr-4 text-3xl text-green-400" />
               <p className="text-gray-400">+251 933621793</p>
             </div>
             <div className="flex items-center">
-              <FaMapMarkerAlt className="text-red-400 text-3xl mr-4" />
+              <FaMapMarkerAlt className="mr-4 text-3xl text-red-400" />
               <p className="text-gray-400">Addis Ababa, Ethiopia</p>
             </div>
           </motion.div>
@@ -57,7 +57,7 @@ export default function Contact() {
           {/* Contact Form */}
           <motion.form 
             onSubmit={sendEmail}
-            className="bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700 space-y-4"
+            className="p-6 space-y-4 bg-gray-800 border border-gray-700 shadow-lg rounded-xl"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -69,7 +69,7 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full p-3 text-white bg-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
             />
             <input
               type="email"
@@ -78,7 +78,7 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full p-3 text-white bg-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
             />
             <textarea
               name="message"
@@ -87,19 +87,19 @@ export default function Contact() {
               value={formData.message}
               onChange={handleChange}
               required
-              className="w-full p-3 rounded-lg bg-gray-700 text-white outline-none focus:ring-2 focus:ring-red-500"
+              className="w-full p-3 text-white bg-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-red-500"
             ></textarea>
 
             <motion.button 
               type="submit" 
-              className="w-full flex justify-center items-center bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition duration-300"
+              className="flex items-center justify-center w-full py-3 font-semibold text-white transition duration-300 bg-blue-500 rounded-lg hover:bg-blue-600"
               whileHover={{ scale: 1.05 }}
             >
               <FaPaperPlane className="mr-2" /> Send Message
             </motion.button>
 
-            {status.sent && <p className="text-green-400 mt-2">Message Sent Successfully!</p>}
-            {status.error && <p className="text-red-400 mt-2">Failed to send message.</p>}
+            {status.sent && <p className="mt-2 text-green-400">Message Sent Successfully!</p>}
+            {status.error && <p className="mt-2 text-red-400">Failed to send message.</p>}
           </motion.form>
         </div>
       </div>
