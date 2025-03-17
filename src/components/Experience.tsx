@@ -33,10 +33,10 @@ const experiences = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="py-12 px-32 bg-gray-900 text-white">
-      <div className="container mx-auto px-6">
+    <section id="experience" className="py-12 px-6 md:px-16 lg:px-32 bg-gray-900 text-white">
+      <div className="container mx-auto">
         <motion.h2
-          className="text-3xl font-bold text-center text-green-500 text-primary mb-10"
+          className="text-3xl font-bold text-center text-green-500 mb-10"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -45,22 +45,24 @@ const ExperienceSection = () => {
         </motion.h2>
 
         {/* Timeline Wrapper */}
-        <div className="border-l-4 border-green-500 ml-5">
+        <div className="border-l-4 border-green-500 ml-4 md:ml-6">
           {experiences.map((exp, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: exp.delay }}
-              className="mb-8 ml-6"
+              className="mb-8 ml-4 md:ml-6"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
                 <div className="bg-gray-800 p-3 rounded-full">{exp.icon}</div>
-                <h3 className="text-xl font-semibold">{exp.title}</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-center md:text-left">{exp.title}</h3>
               </div>
-              <p className="text-green-400 font-medium">{exp.company} | <small>{exp.type}</small></p>
-              <p className="text-gray-400">{exp.description}</p>
-              <div className="mt-2 h-1 w-20 bg-green-500"></div>
+              <p className="text-green-400 font-medium text-center md:text-left">
+                {exp.company} | <small>{exp.type}</small>
+              </p>
+              <p className="text-gray-400 text-sm md:text-base text-center md:text-left">{exp.description}</p>
+              <div className="mt-2 h-1 w-20 bg-green-500 mx-auto md:mx-0"></div>
             </motion.div>
           ))}
         </div>
