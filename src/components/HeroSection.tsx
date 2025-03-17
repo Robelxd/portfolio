@@ -83,15 +83,18 @@ const HeroSection = () => {
             </motion.a>
 
             <motion.a
-              href="https://linkedin.com/in/robel-doba"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2 bg-[#4E9F3D] text-white rounded-full transition-all duration-300"
-              whileHover={{ scale: 1.1, backgroundColor: "#3C7A2F" }}
-              whileTap={{ scale: 0.9 }}
-            >
-              Contact
-            </motion.a>
+  href="#contact"
+  className="px-6 py-2 bg-[#4E9F3D] text-white rounded-full transition-all duration-300"
+  whileHover={{ scale: 1.1, backgroundColor: "#3C7A2F" }}
+  whileTap={{ scale: 0.9 }}
+  onClick={(e) => {
+    e.preventDefault();
+    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+  }}
+>
+  Contact
+</motion.a>
+
           </div>
         </div>
       </div>
