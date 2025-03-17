@@ -17,7 +17,7 @@ const HeroSection = () => {
             whileHover={{ scale: 1.05 }}
           >
             <img
-              src="src/assets/profile.jpg" // Update with your image path
+              src={`${import.meta.env.BASE_URL}src/assets/profile.jpg`} // Update with your image path
               alt="Profile"
               className="object-cover w-full h-full"
             />
