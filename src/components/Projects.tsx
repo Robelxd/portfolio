@@ -5,13 +5,13 @@ const projects = [
   {
     title: "Muyategna",
     description: "A freelancing web platform that connects customers with professionals and handymen, enabling job posting, professional applications, and a subscription-based payment model.",
-    image: "src/assets/moya1-img.jpg",
+    image: "/images/moya1-img.jpg",
     technologies: [SiNuxtdotjs, SiTailwindcss, FaVuejs, SiI18Next, FaJs], // FaVuejs used for Pinia
   },
   {
     title: "Maid Finder",
     description: "A web platform designed to connect customers with domestic help services, allowing users to find and hire maids, cleaners, and other household service providers easily.",
-    image: "src/assets/md1-img.jpg",
+    image: "/images/md1-img.jpg",
     technologies: [SiNuxtdotjs, SiTailwindcss, FaJs, FaVuejs],
   },
 ];
