@@ -5,12 +5,7 @@ import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from "react-icons/f
 
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState({ sent: false, error: false });
-
-const FaEnvelopeIcon: React.FC = () => <FaEnvelope />;
-const FaPhoneIcon: React.FC = () => <FaPhone />;
-const FaMapMarkerAltIcon: React.FC = () => <FaMapMarkerAlt />;
-
+  const [status, setStatus] = useState({ sent: false, error: false, loading: false });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -18,17 +13,23 @@ const FaMapMarkerAltIcon: React.FC = () => <FaMapMarkerAlt />;
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus({ sent: false, error: false, loading: true });
 
     emailjs
-      .sendForm("service_id", "template_id", e.currentTarget, "user_id")
-      .then(() => setStatus({ sent: true, error: false }))
-      .catch(() => setStatus({ sent: false, error: true }));
+      .sendForm(
+        "default_service", // ✅ Replace with your actual EmailJS Service ID
+        "template_cqvxiom", // ✅ Replace with your EmailJS Template ID
+        e.currentTarget,
+        "LsXSIET5YUTmDb0BN" // ✅ Replace with your Public Key from EmailJS
+      )
+      .then(() => setStatus({ sent: true, error: false, loading: false }))
+      .catch(() => setStatus({ sent: false, error: true, loading: false }));
 
     setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-    <section id="contact" className="px-32 py-16 text-white bg-gray-900">
+    <section id="contact" className="px-6 py-16 md:px-32 text-white bg-gray-900">
       <div className="container mx-auto text-center">
         <motion.h2 
           className="mb-8 text-4xl font-bold text-green-500"
@@ -100,11 +101,15 @@ const FaMapMarkerAltIcon: React.FC = () => <FaMapMarkerAlt />;
               className="flex items-center justify-center w-full py-3 font-semibold text-white transition duration-300 bg-blue-500 rounded-lg hover:bg-blue-600"
               whileHover={{ scale: 1.05 }}
             >
-              <FaPaperPlane className="mr-2" /> Send Message
+              {status.loading ? "Sending..." : (
+                <>
+                  <FaPaperPlane className="mr-2" /> Send Message
+                </>
+              )}
             </motion.button>
 
-            {status.sent && <p className="mt-2 text-green-400">Message Sent Successfully!</p>}
-            {status.error && <p className="mt-2 text-red-400">Failed to send message.</p>}
+            {status.sent && <p className="mt-2 text-green-400">✅ Message Sent Successfully!</p>}
+            {status.error && <p className="mt-2 text-red-400">❌ Failed to send message. Try again.</p>}
           </motion.form>
         </div>
       </div>

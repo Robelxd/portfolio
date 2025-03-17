@@ -4,38 +4,37 @@ import { SiTailwindcss, SiI18Next, SiVite, SiBootstrap, SiNuxtdotjs } from "reac
 const projects = [
   {
     title: "Muyategna",
-    description: "A freelancing platform that connects professionals with customers...",
-    image: "src/assets/profile.jpg",
+    description: "A freelancing web platform that connects customers with professionals and handymen, enabling job posting, professional applications, and a subscription-based payment model.",
+    image: "src/assets/moya1-img.jpg",
     technologies: [SiNuxtdotjs, SiTailwindcss, FaVuejs, SiI18Next, FaJs], // FaVuejs used for Pinia
   },
   {
     title: "Maid Finder",
-    description: "A web app that helps customers find domestic help...",
-    image: "/maidfinder.png",
+    description: "A web platform designed to connect customers with domestic help services, allowing users to find and hire maids, cleaners, and other household service providers easily.",
+    image: "src/assets/md1-img.jpg",
     technologies: [SiNuxtdotjs, SiTailwindcss, FaJs, FaVuejs],
-  },
-  {
-    title: "Portfolio",
-    description: "My personal portfolio showcasing projects and skills...",
-    image: "/portfolio.png",
-    technologies: [FaReact, SiTailwindcss, SiVite, SiBootstrap],
   },
 ];
 
 const Projects = () => {
   return (
-    <div className="py-12 px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="py-20 px-32 flex flex-col gap-10">
+       <h2 className="text-green-500 text-4xl font-bold text-center">Projects</h2>
       {projects.map((project, index) => (
         <div
           key={index}
-          className="bg-[#121212] rounded-lg p-6 shadow-lg hover:scale-105 transition transform duration-300"
+          className="bg-[#2f2e2e] rounded-lg p-6 shadow-lg hover:scale-[1.03] transition duration-300"
         >
-          <img src={project.image} alt={project.title} className="rounded-lg mb-4" />
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-auto rounded-lg mb-6"
+          />
           <h3 className="text-white text-2xl font-bold mb-2">{project.title}</h3>
           <p className="text-gray-300">{project.description}</p>
           <div className="flex gap-4 mt-4">
             {project.technologies.map((Icon, i) => (
-              <Icon key={i} className="text-xl text-green-400 hover:text-green-500 transition duration-300" />
+              <Icon key={i} className="text-2xl text-green-400 hover:text-green-500 transition duration-300" />
             ))}
           </div>
         </div>
