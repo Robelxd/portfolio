@@ -5,6 +5,7 @@ import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import Experience from "./components/Experience";
 import { motion } from "framer-motion";
+import Certificate from "./components/Certificate";
 
 const App: React.FC = () => {
   return (
@@ -34,6 +35,9 @@ const App: React.FC = () => {
 
       {/* Skills Section */}
       <Skills />
+
+      {/* Certificate Section */}
+      <Certificate />
 
       {/* Contact Section */}
       <Contact />

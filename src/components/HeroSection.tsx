@@ -72,8 +72,8 @@ const HeroSection = () => {
           {/* Buttons */}
           <div className="flex justify-center gap-4 mt-6 md:justify-start">
             <motion.a
-              href="/images/robeldoba_cv.pdf"
-              download="robeldoba_cv.pdf"
+              href="/images/RobelCV.pdf"
+              download="RobelCV.pdf"
               className="px-6 py-2 border-2 border-[#4E9F3D] text-[#4E9F3D] rounded-full transition-all duration-300 relative overflow-hidden"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
