@@ -28,78 +28,103 @@ export default function Contact() {
     setFormData({ name: "", email: "", message: "" });
   };
 
+  const contactInfoVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeInOut" } },
+  };
+
+  const formVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeInOut" } },
+  };
+
+  const inputVariants = {
+    initial: { opacity: 0, y: -20 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.4, staggerChildren: 0.1 } },
+  };
+
+  const buttonVariants = {
+    hover: { scale: 1.05, boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" },
+  };
+
   return (
-    <section id="contact" className="px-6 py-16 md:px-32 text-white bg-gray-900">
+    <section id="contact" className="px-6 py-16 text-white md:px-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black">
       <div className="container mx-auto text-center">
-        <motion.h2 
-          className="mb-8 text-4xl font-bold text-green-500"
+        <motion.h2
+          className="mb-8 text-4xl font-bold text-transparent bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Get in Touch
+          Let's Connect!
         </motion.h2>
 
         <div className="grid gap-10 md:grid-cols-2">
           {/* Contact Info */}
-          <motion.div 
-            className="p-6 bg-gray-800 border border-gray-700 shadow-lg rounded-xl"
-            whileHover={{ scale: 1.05 }}
+          <motion.div
+            className="p-6 bg-gray-800 border border-gray-700 border-solid shadow-lg rounded-2xl backdrop-filter backdrop-blur-lg bg-opacity-30"
+            variants={contactInfoVariants}
+            initial="hidden"
+            animate="visible"
+            whileHover={{ scale: 1.03, boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" }}
           >
             <div className="flex items-center mb-4">
-              <FaEnvelope className="mr-4 text-3xl text-blue-400" />
-              <p className="text-gray-400">robeldoba8@gmail.com</p>
+              <FaEnvelope className="mr-4 text-3xl text-blue-400 drop-shadow-md" />
+              <p className="text-gray-300">robeldoba8@gmail.com</p>
             </div>
             <div className="flex items-center mb-4">
-              <FaPhone className="mr-4 text-3xl text-green-400" />
-              <p className="text-gray-400">+251 933621793</p>
+              <FaPhone className="mr-4 text-3xl text-green-400 drop-shadow-md" />
+              <p className="text-gray-300">+251 933621793</p>
             </div>
             <div className="flex items-center">
-              <FaMapMarkerAlt className="mr-4 text-3xl text-red-400" />
-              <p className="text-gray-400">Addis Ababa, Ethiopia</p>
+              <FaMapMarkerAlt className="mr-4 text-3xl text-red-400 drop-shadow-md" />
+              <p className="text-gray-300">Addis Ababa, Ethiopia</p>
             </div>
           </motion.div>
 
           {/* Contact Form */}
-          <motion.form 
+          <motion.form
             onSubmit={sendEmail}
-            className="p-6 space-y-4 bg-gray-800 border border-gray-700 shadow-lg rounded-xl"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
+            className="p-6 space-y-4 bg-gray-800 border border-gray-700 border-solid shadow-lg rounded-2xl backdrop-filter backdrop-blur-lg bg-opacity-30"
+            variants={formVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full p-3 text-white bg-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full p-3 text-white bg-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows={4}
-              value={formData.message}
-              onChange={handleChange}
-              required
-              className="w-full p-3 text-white bg-gray-700 rounded-lg outline-none focus:ring-2 focus:ring-red-500"
-            ></textarea>
+            <motion.div variants={inputVariants} initial="initial" animate="animate">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full p-3 text-white bg-gray-700 bg-opacity-50 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full p-3 text-white bg-gray-700 bg-opacity-50 rounded-lg outline-none focus:ring-2 focus:ring-green-500"
+              />
+              <textarea
+                name="message"
+                placeholder="Your Message"
+                rows={4}
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="w-full p-3 text-white bg-gray-700 bg-opacity-50 rounded-lg outline-none focus:ring-2 focus:ring-red-500"
+              ></textarea>
+            </motion.div>
 
-            <motion.button 
-              type="submit" 
-              className="flex items-center justify-center w-full py-3 font-semibold text-white transition duration-300 bg-blue-500 rounded-lg hover:bg-blue-600"
-              whileHover={{ scale: 1.05 }}
+            <motion.button
+              type="submit"
+              className="flex items-center justify-center w-full py-3 font-semibold text-white transition duration-300 rounded-lg bg-gradient-to-r from-blue-500 to-purple-600"
+              variants={buttonVariants}
+              whileHover="hover"
             >
               {status.loading ? "Sending..." : (
                 <>

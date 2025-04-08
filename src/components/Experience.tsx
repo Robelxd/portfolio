@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import { FaBriefcase, FaCode, FaGlobe } from "react-icons/fa";
 
 const experiences = [
@@ -8,7 +10,7 @@ const experiences = [
     type: "Internship",
     description:
       "Worked on designing and developing web interfaces, improving UI/UX, and enhancing the user experience with modern front-end technologies.",
-    icon: <FaBriefcase className="text-green-500" size={24} />,
+    icon: <FaBriefcase className="text-blue-400" size={24} />,
     delay: 0.3,
   },
   {
@@ -17,7 +19,7 @@ const experiences = [
     type: "Group Project",
     description:
       "Designed and developed an online platform that connects customers with domestic workers. Built interactive UI components using Bootstrap, Vue.js, and Tailwind CSS.",
-    icon: <FaCode className="text-green-500" size={24} />,
+    icon: <FaCode className="text-yellow-400" size={24} />,
     delay: 0.5,
   },
   {
@@ -26,43 +28,72 @@ const experiences = [
     type: "Senior Project",
     description:
       "Developed a freelancing platform for hiring professionals and handymen. Implemented dynamic filtering, user dashboards, and interactive job posting features.",
-    icon: <FaGlobe className="text-green-500" size={24} />,
+    icon: <FaGlobe className="text-purple-400" size={24} />,
     delay: 0.7,
   },
 ];
 
 const ExperienceSection = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ threshold: 0.2 });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  const experienceVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeInOut" } },
+  };
+
   return (
-    <section id="experience" className="py-12 px-6 md:px-16 lg:px-32 bg-gray-900 text-white">
+    <section
+      id="experience"
+      className="px-6 py-12 text-white md:px-16 lg:px-32 bg-gradient-to-br from-gray-900 via-gray-800 to-black"
+    >
       <div className="container mx-auto">
         <motion.h2
-          className="text-3xl font-bold text-center text-green-500 mb-10"
+          className="mb-10 text-3xl font-bold text-center text-gradient from-green-400 to-blue-500 bg-clip-text md:text-4xl"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          Experience
+          My Journey
         </motion.h2>
 
-        {/* Timeline Wrapper */}
-        <div className="border-l-4 border-green-500 ml-4 md:ml-6">
+        <div className="relative">
+          <div className="absolute top-0 h-full border-l-2 border-green-500 border-solid left-6 md:left-8"></div>
+
           {experiences.map((exp, index) => (
             <motion.div
+              ref={ref}
               key={index}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: exp.delay }}
-              className="mb-8 ml-4 md:ml-6"
+              initial="hidden"
+              animate={controls}
+              variants={experienceVariants}
+              transition={{ delay: exp.delay }}
+              className="relative pl-12 mb-8 md:pl-16 group" // Added group for hover effects
             >
-              <div className="flex items-center gap-3 flex-wrap">
-                <div className="bg-gray-800 p-3 rounded-full">{exp.icon}</div>
-                <h3 className="text-lg md:text-xl font-semibold text-center md:text-left">{exp.title}</h3>
+              <div className="absolute left-0 p-3 bg-gray-800 rounded-full top-2">
+                {exp.icon}
               </div>
-              <p className="text-green-400 font-medium text-center md:text-left">
-                {exp.company} | <small>{exp.type}</small>
-              </p>
-              <p className="text-gray-400 text-sm md:text-base text-center md:text-left">{exp.description}</p>
-              <div className="mt-2 h-1 w-20 bg-green-500 mx-auto md:mx-0"></div>
+
+              <div className="flex flex-col">
+                <h3 className="text-lg font-semibold md:text-xl">{exp.title}</h3>
+                <p className="font-medium text-green-400">
+                  {exp.company} | <small>{exp.type}</small>
+                </p>
+                <motion.p
+                  className="text-sm text-gray-400 md:text-base"
+                  whileHover={{ scale: 1.02 }} // Added hover effect
+                  transition={{ duration: 0.3 }}
+                >
+                  {exp.description}
+                </motion.p>
+                <div className="w-20 h-1 mt-2 bg-gradient-to-r from-green-400 to-blue-500"></div>
+              </div>
             </motion.div>
           ))}
         </div>

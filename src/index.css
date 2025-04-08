@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.glow-icon {
+    text-shadow: 0 0 8px rgba(78, 159, 61, 0.6);
+  }
+  
+  
