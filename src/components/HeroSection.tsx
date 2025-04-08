@@ -28,7 +28,7 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="w-[90%] max-w-6xl flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+      <div className="w-[90%] max-w-6xl flex flex-col-reverse md:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12">
         {/* Left Text Section */}
         <div className="w-full text-center md:w-1/2 md:text-left">
           <motion.h1
@@ -98,18 +98,18 @@ const HeroSection = () => {
         <div className="flex flex-col items-center justify-center w-full md:w-1/2">
           {/* Profile Image */}
           <motion.div
-  className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-[#4E9F3D] border-solid shadow-xl"
-  initial={{ opacity: 0, scale: 0.8, y: 0 }} // Combine initial props
-  animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }} // Combine animate props
-  transition={{ 
-    y: { repeat: Infinity, duration: 3, ease: "easeInOut" }, // Transition for y
-    opacity: { duration: 0.8, ease: "easeInOut" }, // Transition for opacity
-    scale: { duration: 0.8, ease: "easeInOut" }, // Transition for scale
-  }}
-  whileHover={{ scale: 1.03, rotate: [0, 3, -3, 0] }}
->
-  <img src="/images/profile.jpg" alt="Profile" className="object-cover w-full h-full" />
-</motion.div>
+            className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-[#4E9F3D] border-solid shadow-xl"
+            initial={{ opacity: 0, scale: 0.8, y: 0 }}
+            animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+            transition={{
+              y: { repeat: Infinity, duration: 3, ease: "easeInOut" },
+              opacity: { duration: 0.8, ease: "easeInOut" },
+              scale: { duration: 0.8, ease: "easeInOut" },
+            }}
+            whileHover={{ scale: 1.03, rotate: [0, 3, -3, 0] }}
+          >
+            <img src="/images/profile.jpg" alt="Profile" className="object-cover w-full h-full" />
+          </motion.div>
 
           {/* Social Icons */}
           <div className="flex flex-wrap justify-center gap-4 mt-6 text-3xl md:text-4xl">
@@ -127,11 +127,11 @@ const HeroSection = () => {
                 icon: <FaInstagram />,
               },
               {
-                href: "https://twitter.com/your-twitter", // Replace with actual
+                href: "https://x.com/robel_tech?t=9oZw3qIbuwQPRnNQqauqEw&s=09",
                 icon: <FaTwitter />,
               },
               {
-                href: "tel:+251-910-000000",
+                href: "tel:+251-33-621793",
                 icon: <FaPhoneAlt />,
               },
             ].map(({ href, icon }, idx) => (
