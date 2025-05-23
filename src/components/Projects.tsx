@@ -65,7 +65,7 @@ const Projects = () => {
       id="projects"
     >
       <motion.h2
-        className="text-4xl font-bold text-center text-transparent text-white bg-clip-text bg-gradient-to-r from-green-400 via-blue-500 to-purple-500"
+        className="text-4xl font-bold text-center text-transparent text-white bg-clip-text bg-gradient-to-r from-green-500 via-blue-500 to-purple-500"
         variants={projectVariants}
       >
         My Projects
