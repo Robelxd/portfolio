@@ -66,7 +66,7 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col justify-center gap-4 mt-6 sm:flex-row md:justify-start">
             <motion.a
-              href="/images/RobelCV.pdf"
+              href="/images/Robel_Doba_Resume.pdf"
               download="RobelCV.pdf"
               className="px-6 py-2 border-2 border-[#4E9F3D] border-solid text-[#4E9F3D] rounded-full text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
