@@ -11,33 +11,35 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex items-center justify-center w-full min-h-screen px-4 pt-24 text-white bg-gradient-to-br from-gray-900 via-gray-800 to-black md:px-8 md:pt-0">
-      {/* Logo */}
-      <div className="absolute z-50 top-6 left-4">
-        <motion.img
+    <section className="relative flex items-center justify-center w-full min-h-screen px-4 pt-24 text-white bg-gradient-to-br from-black via-gray-900 to-gray-800 md:px-8">
+      {/* Glowing Logo */}
+      <motion.div
+        className="absolute z-50 top-6 left-4"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1.05 }}
+        transition={{ duration: 0.6 }}
+      >
+        <img
           src="/images/logo8.png"
           alt="Robel Logo"
-          className="w-auto h-20 md:h-32 drop-shadow-2xl"
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1.1 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="h-20 md:h-28"
           style={{
-            filter: "drop-shadow(0 0 12px #4E9F3D)",
+            filter: "drop-shadow(0 0 15px #4E9F3D)",
           }}
-          key="logo-animation"
         />
-      </div>
+      </motion.div>
 
-      <div className="w-[90%] max-w-6xl flex flex-col-reverse md:flex-row items-center justify-between gap-8 sm:gap-10 md:gap-12">
-        {/* Left Text Section */}
-        <div className="w-full text-center md:w-1/2 md:text-left">
+      {/* Main Content */}
+      <div className="z-10 flex flex-col-reverse items-center justify-between w-[90%] max-w-7xl gap-10 md:flex-row">
+        {/* Left Side - Text */}
+        <div className="w-full text-center md:text-left md:w-1/2">
           <motion.h1
-            className="text-3xl font-bold leading-tight md:text-4xl"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
+            className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
+            initial={{ y: 60, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
           >
-            Hi, I'm Robel Doba
+            Hi, I'm <span className="text-[#4E9F3D]">Robel Doba</span>
           </motion.h1>
 
           <TypeAnimation
@@ -51,68 +53,67 @@ const HeroSection = () => {
             ]}
             speed={50}
             repeat={Infinity}
-            className="mt-2 text-lg font-semibold text-green-500"
+            className="block mt-4 text-xl font-semibold text-green-400"
           />
 
           <motion.p
-            className="mt-4 text-sm leading-relaxed text-gray-300 md:text-base"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0, transition: { delay: 0.2 } }}
+            className="mt-6 text-sm text-gray-300 sm:text-base md:text-lg"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
           >
-            Passionate web developer crafting seamless digital experiences. Skilled in frontend and backend technologies, I build
-            user-friendly and scalable applications.
+            I craft beautiful, fast, and accessible web interfaces. Passionate about clean code and creating stunning user experiences across modern frameworks.
           </motion.p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col justify-center gap-4 mt-6 sm:flex-row md:justify-start">
+          <div className="flex flex-col items-center justify-center gap-4 mt-8 sm:flex-row md:justify-start">
             <motion.a
               href="/images/Robel_Doba_Resume.pdf"
               download="RobelCV.pdf"
-              className="px-6 py-2 border-2 border-[#4E9F3D] border-solid text-[#4E9F3D] rounded-full text-sm sm:text-base"
+              className="px-6 py-2 text-sm font-medium text-[#4E9F3D] border border-[#4E9F3D] border-solid rounded-full transition-all hover:bg-[#4E9F3D] hover:text-black shadow-md"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0, transition: { delay: 0.4 } }}
             >
-              My Resume
+              Download Resume
             </motion.a>
-
             <motion.a
               href="#contact"
-              className="px-6 py-2 bg-[#4E9F3D] text-white rounded-full text-sm sm:text-base"
-              whileHover={{ scale: 1.05, backgroundColor: "#3C7A2F" }}
-              whileTap={{ scale: 0.95 }}
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
               }}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0, transition: { delay: 0.6 } }}
+              className="px-6 py-2 text-sm font-medium text-black bg-[#4E9F3D] rounded-full shadow-md hover:bg-[#3C7A2F] transition-all"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Contact
+              Contact Me
             </motion.a>
           </div>
         </div>
 
-        {/* Right Profile & Social */}
-        <div className="flex flex-col items-center justify-center w-full md:w-1/2">
-          {/* Profile Image */}
+        {/* Right Side - Avatar + Socials */}
+        <div className="relative flex flex-col items-center justify-center w-full md:w-1/2">
+          {/* Animated Avatar */}
           <motion.div
-            className="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-[#4E9F3D] border-solid shadow-xl"
-            initial={{ opacity: 0, scale: 0.8, y: 0 }}
-            animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
+            className="w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-[#4E9F3D] border-solid shadow-2xl bg-black/20 backdrop-blur-lg"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1, y: [0, -10, 0] }}
             transition={{
               y: { repeat: Infinity, duration: 3, ease: "easeInOut" },
-              opacity: { duration: 0.8, ease: "easeInOut" },
-              scale: { duration: 0.8, ease: "easeInOut" },
+              opacity: { duration: 0.6 },
+              scale: { duration: 0.8 },
             }}
-            whileHover={{ scale: 1.03, rotate: [0, 3, -3, 0] }}
+            whileHover={{ scale: 1.05 }}
           >
-            <img src="/images/profile.jpg" alt="Profile" className="object-cover w-full h-full" />
+            <img
+              src="/images/profile.jpg"
+              alt="Animated Avatar"
+              className="object-cover w-full h-full"
+            />
           </motion.div>
 
-          {/* Social Icons */}
-          <div className="flex flex-wrap justify-center gap-4 mt-6 text-3xl md:text-4xl">
+          {/* Socials */}
+          <div className="flex flex-wrap justify-center gap-4 mt-6 text-3xl">
             {[
               {
                 href: "https://www.linkedin.com/in/robel-doba-13bb72351/",
@@ -140,18 +141,11 @@ const HeroSection = () => {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-white hover:text-[#4E9F3D]"
-                whileHover={{
-                  scale: 1.3,
-                  rotate: [0, 15, -15, 0],
-                  transition: { duration: 0.6 },
-                }}
-                style={{
-                  textShadow: "0 0 10px #4E9F3D",
-                }}
+                className="text-white hover:text-[#4E9F3D] transition-all"
+                whileHover={{ scale: 1.2, rotate: [0, 10, -10, 0] }}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeInOut" }}
+                transition={{ duration: 0.6, delay: idx * 0.1 }}
               >
                 {icon}
               </motion.a>

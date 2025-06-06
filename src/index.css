@@ -6,4 +6,13 @@
     text-shadow: 0 0 8px rgba(78, 159, 61, 0.6);
   }
   
-  
+  .clip-hexagon {
+  clip-path: polygon(
+    25% 5%, 75% 5%,
+    95% 50%, 75% 95%,
+    25% 95%, 5% 50%
+  );
+}
+.rounded-hex {
+  clip-path: polygon(25% 5%, 75% 5%, 95% 50%, 75% 95%, 25% 95%, 5% 50%);
+}
