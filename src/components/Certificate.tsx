@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FaExternalLinkAlt, FaAndroid, FaCode, FaCalendarAlt } from "react-icons/fa";
 
-// Certificate data now includes 'date'
+// Certificate data
 const certificates = [
   {
     title: "Android Developer Fundamentals",
@@ -19,20 +19,28 @@ const certificates = [
   },
 ];
 
-// Motion variants for staggering
+// Animation Variants
 const containerVariants = {
   hidden: {},
-  show: {
+  visible: {
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.3,
       delayChildren: 0.2,
     },
   },
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.95 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+  hidden: { opacity: 0, y: 40, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut" as const,
+    },
+  },
 };
 
 const CertificateSection = () => {
@@ -53,12 +61,12 @@ const CertificateSection = () => {
         <span className="block w-24 h-1 mx-auto mt-3 rounded-full bg-gradient-to-r from-green-400 to-blue-500"></span>
       </motion.h2>
 
-      {/* Animated Card Container */}
+      {/* Cards Container with stagger animation */}
       <motion.div
         className="grid gap-10 sm:grid-cols-1 md:grid-cols-2"
         variants={containerVariants}
         initial="hidden"
-        whileInView="show"
+        whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
         {certificates.map((cert, index) => (
@@ -67,25 +75,21 @@ const CertificateSection = () => {
             href={cert.link}
             target="_blank"
             rel="noopener noreferrer"
+            className="p-6 transition-all border border-gray-700 border-solid bg-white/5 backdrop-blur-md rounded-2xl group"
             variants={cardVariants}
-            className="bg-white/5 hover:bg-white/10 backdrop-blur-md p-6 rounded-2xl shadow-xl border border-gray-700 border-solid transition-all duration-300 hover:shadow-2xl hover:scale-[1.02] group"
+            whileHover={{ scale: 1.03, boxShadow: "0 10px 20px rgba(0,0,0,0.3)" }}
           >
-            {/* Icon and Title */}
             <div className="flex items-center gap-3 mb-2">
               {cert.icon}
               <h3 className="text-lg font-semibold text-green-400 transition group-hover:text-green-300">
                 {cert.title}
               </h3>
             </div>
-
-            {/* Provider and Date */}
             <p className="text-sm text-gray-400">{cert.provider}</p>
             <div className="flex items-center gap-2 mt-1 text-sm text-gray-500">
               <FaCalendarAlt className="text-xs text-blue-300" />
               <span>{cert.date}</span>
             </div>
-
-            {/* Certificate Link */}
             <div className="flex items-center gap-2 mt-4 text-sm font-medium text-blue-400 transition group-hover:text-blue-300">
               View Certificate <FaExternalLinkAlt className="text-xs" />
             </div>
