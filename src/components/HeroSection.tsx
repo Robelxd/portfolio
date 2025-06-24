@@ -50,7 +50,7 @@ const HeroSection = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8 }}
           >
-            Hi, I'm <span className="text-[#4E9F3D]">Robel Doba</span>
+            Hi, I'm <span className="text-[#215616]">Robel Doba</span>
           </motion.h1>
 
           <TypeAnimation
