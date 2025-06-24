@@ -6,11 +6,11 @@ const BottomNavigation = () => {
   const [activeNav, setActiveNav] = useState('home');
 
   const navItems = [
-    { id: 'home', href: '#home', icon: Home, label: 'Home' },
-    { id: 'experience', href: '#experience', icon: User, label: 'Experience' },
-    { id: 'projects', href: '#projects', icon: Briefcase, label: 'Projects' },
-    { id: 'tech-stack', href: '#tech-stack', icon: Wrench, label: 'Skills' },
-    { id: 'contact', href: '#contact', icon: Phone, label: 'Contact' },
+    { id: 'home', href: '#home', icon: Home, },
+    { id: 'experience', href: '#experience', icon: User,},
+    { id: 'projects', href: '#projects', icon: Briefcase,},
+    { id: 'tech-stack', href: '#tech-stack', icon: Wrench,},
+    { id: 'contact', href: '#contact', icon: Phone,},
   ];
 
   const handleNavClick = (id: string, href: string) => {
@@ -74,17 +74,6 @@ const BottomNavigation = () => {
                 </motion.div>
 
                 {/* Tooltip only on Active */}
-                {isActive && (
-                  <motion.div
-                    className="absolute -top-11 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-black/90 text-white text-[10px] rounded-md whitespace-nowrap"
-                    initial={{ opacity: 0, y: 4 }}
-                    animate={{ opacity: 1, y: 0 }}
-                  >
-                    {item.label}
-                    <div className="absolute w-0 h-0 transform -translate-x-1/2 border-t-4 border-l-4 border-r-4 top-full left-1/2 border-l-transparent border-r-transparent border-t-black/90"></div>
-                  </motion.div>
-                )}
-
                 {/* Glow pulse */}
                 {isActive && (
                   <motion.div
