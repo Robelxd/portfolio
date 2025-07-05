@@ -1,12 +1,23 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  FaHtml5, FaCss3Alt, FaJs, FaReact, FaGithub,
-  FaVuejs, FaBootstrap, FaNodeJs
+  FaHtml5,
+  FaCss3Alt,
+  FaJs,
+  FaReact,
+  FaVuejs,
+  FaBootstrap,
+  FaGithub,
 } from "react-icons/fa";
 import {
-  SiNextdotjs, SiTailwindcss, SiMongodb, SiFigma, SiRedux, SiDocker,
-  SiTypescript
+  SiTailwindcss,
+  SiTypescript,
+  SiNextdotjs,
+  SiFigma,
+  SiDocker,
+  SiNuxtdotjs,
+  SiSupabase,
+  SiVscodium,
 } from "react-icons/si";
 
 const techs = [
@@ -16,13 +27,17 @@ const techs = [
   { name: "TypeScript", icon: <SiTypescript />, color: "#3178C6" },
   { name: "React", icon: <FaReact />, color: "#61DBFB" },
   { name: "Next.js", icon: <SiNextdotjs />, color: "white" },
+  { name: "Nuxt.js", icon: <SiNuxtdotjs />, color: "#00DC82" },
   { name: "Tailwind", icon: <SiTailwindcss />, color: "#38bdf8" },
   { name: "Vue", icon: <FaVuejs />, color: "#42b883" },
   { name: "Bootstrap", icon: <FaBootstrap />, color: "#7952B3" },
   { name: "GitHub", icon: <FaGithub />, color: "white" },
   { name: "Figma", icon: <SiFigma />, color: "#F24E1E" },
   { name: "Docker", icon: <SiDocker />, color: "#0db7ed" },
+  { name: "Supabase", icon: <SiSupabase />, color: "#3ECF8E" },
+  { name: "VS Code", icon: <SiVscodium />, color: "#007ACC" },
 ];
+
 
 const TechStack: React.FC = () => {
   return (
